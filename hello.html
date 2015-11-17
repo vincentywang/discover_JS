@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>hello React</title>
+    <meta charset="utf-8"> </head>
+<body>
+<div id="app1">
+    <!-- my app renders here -->
+</div>
+<div id="app2">
+    <!-- my app renders here -->
+</div>
+<div id="app3">
+    <!-- my app renders here -->
+</div>
+<script src="react/build/react.js"></script>
+<script src="react/build/react-dom.js"></script>
+
+
+<script>
+    // my app's code
+
+    ReactDOM.render(
+            React.DOM.h1(null, "Hello world"),
+            document.getElementById("app1")
+    );
+
+    ReactDOM.render(
+            React.DOM.h2({
+                        id: "my-heading-2"
+                    },
+                    "Happy Coding"),
+            document.getElementById("app2")
+    );
+
+
+    ReactDOM.render(
+            React.DOM.h1(
+                    {
+                        className: "pretty",
+                        htmlFor: "me"
+                    },
+                    "Hello world!"
+            ),
+            document.getElementById("app3")
+    );
+
+
+
+
+</script>
+</body>
+</html>
