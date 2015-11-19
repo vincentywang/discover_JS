@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>hello React</title>
+    <meta charset="utf-8"> </head>
+<body>
+<div id="app1">
+    <!-- my app renders here -->
+</div>
+<div id="app2">
+    <!-- my app renders here -->
+</div>
+<div id="app3">
+    <!-- my app renders here -->
+</div>
+<script src="react/build/react.js"></script>
+<script src="react/build/react-dom.js"></script>
+
+
+<script>
+    var Component = React.createClass({
+        render: function() {
+            return React.DOM.span(null, "My name is " + this.props.name);
+        }
+    })
+
+    React.render(
+            React.createElement(Component, {
+                name: "Vincent"
+            }),
+            document.getElementById('app1')
+    );
+</script>
+</body>
+</html>
