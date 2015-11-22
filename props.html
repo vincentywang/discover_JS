@@ -15,36 +15,60 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 
-<script>
+<script type="text/babel">
 
-  var TextAreaCounter = React.createClass({
+  var HelloWorld = React.createClass({
+
     propTypes: {
-      value: React.PropTypes.string
+      name: React.PropTypes.string,
+      isPerson: React.PropTypes.bool
     },
 
-    _textChange: function(ev) {
-      this.setProps({
-        value: ev.target.value
-      });
+    getDefaultProps: function() {
+      return {
+        name: 'Vincent'
+      }
     },
 
     render: function() {
-      return React.DOM.div(null,
-        React.DOM.textarea({
-          value: this.props.value,
-          onChange: this._textChange
-        }),
-        React.DOM.h3(null, this.props.value.length)
-      );
+      var greeting = "World";
+
+      if (this.props.isPerson) {
+        greeting = (<Person name={this.props.name} />)
+      }
+
+      return (
+        <h1>Hello {greeting}</h1>
+      )
     }
+
   });
 
-  var myTextAreaCounter = ReactDOM.render(
-    React.createElement(TextAreaCounter, {
-      text: "Bob"
-    }),
-    document.getElementById("app1")
+  var Person = React.createClass({
+
+    propTypes: {
+      name: React.PropTypes.string.isRequired
+    },
+
+    getDefaultProps: function() {
+      return {
+        name: 'Vincent'
+      }
+    },
+
+    render: function() {
+      return (
+        <span>{this.props.name}</span>
+      )
+    }
+
+  });
+
+  ReactDOM.render(
+    <HelloWorld name="Tim" isPerson={false} />,
+    document.getElementById('app1')
   );
 
 </script>
