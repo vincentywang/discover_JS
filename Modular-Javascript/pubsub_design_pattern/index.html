@@ -14,6 +14,18 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
+<div>
+  <h2>Stats</h2>
+  <span>people:</span>
+  <div id="statsModule">
+    <script id="stats-template" type="text/template">
+      {{#people}}
+        <span>{{.}}</span>
+      {{/people}}
+    </script>
+  </div>
+</div>
+
 
 <div id="peopleModule">
   <h1>People</h1>
@@ -37,7 +49,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.js"></script>
 
 <!--<script src="scripts/modularJs-basic.js"></script>-->
-<script src="scripts/modularJs-reveal.js"></script>
+<script src="scripts/event.js"></script>
+<script src="scripts/people.js"></script>
+<script src="scripts/stats.js"></script>
 
 </body>
 </html>
