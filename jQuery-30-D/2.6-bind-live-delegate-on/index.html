@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>Bind...Live...Delegate...On...Dang That's confusing</title>
+</head>
+<body>
+
+
+
+<div class="container">
+  <h2>Click Me</h2>
+  <h2>Click Me</h2>
+  <h2>Click Me</h2>
+  <h2>Click Me</h2>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+  (function() {
+
+    /*
+     * event handle bind to current h2 element, the new created element
+     * inside DOM will not receive this click event.
+     * (Special case for clone() function) - pass 'true' argument to clone function, will
+     * clone event handler to new created element.
+     */
+    /*
+     $('h2').bind('click', function(){
+     $(this).clone(true).appendTo('.container');
+     });
+     */
+    /*
+     -------------------------------------------------------------------------------------
+     */
+
+
+    /*
+     * (important) .live function version deprecated: 1.7, removed: 1.9
+     *
+     * live is directly attach to document (content), then watch any change happend to the
+     * selector element, keep event handler alwyas attach to new created element
+     * ---- this seems cost a lot
+     */
+    /*
+     $('h2').live('click', function(){
+     $(this).clone().appendTo('.container');
+     });
+     */
+
+    /*
+     * also can change live event attach content from default document ot .container
+     */
+    /*
+     $('h2', $('.container')[0]).live('click', function(){
+     $(this).clone().appendTo('.container');
+     });
+     */
+    /*
+     -------------------------------------------------------------------------------------
+     */
+
+
+    /*
+     * delegate vs. undelegate
+     * only watch inside .container
+     * $(this) -- still refer to the h2 element
+     *
+     * also possible to specify the contaxt as second parameter to $() function
+     */
+    /*
+     $('.container').delegate('h2', 'click', function(){
+     $(this).clone().appendTo('.container');
+     });
+     */
+    /*
+     -------------------------------------------------------------------------------------
+     */
+
+
+    /*
+     * all above functions refered to this .on() function,
+     *
+     * I try to understand $('xx') only as the contact, h2 is really selector
+     * so $(this) is still h2
+     */
+    $('.container').on('click', 'h2', function(){
+      $(this).clone().appendTo('.container');
+    })
+
+  })();
+
+</script>
+
+</body>
+</html>
