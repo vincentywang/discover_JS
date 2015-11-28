@@ -107,29 +107,33 @@
 
   (function(){
 
-    $('html').addClass('js'); // trick to add special class to handle js enable
+    $('html').addClass('js'); // trick to add css class to handle js enable specially
 
     var contactForm = {
+
       container: $('#contact'),
+
       config: {
         effect: 'slideToggle', // slideUp, slideDown, slideToggle, fadeIn, fadeOut, fadeToggle
         speed: 500
       },
+
       init: function(config){
-        $.extend(this.config, config);
+        $.extend(this.config, config); // extend jQuery, overwrite exit object
         $('<button></button>',{
           text: 'Contact Me'
         })
           .insertAfter('article:first')
           .on('click', this.show)
       },
+
       show: function() {
         var cf = contactForm,
             container = cf.container,
             config = cf.config;
 
         if (container.is(':hidden')) {
-          contactForm.close.call(container);
+          contactForm.close.call(container); // here is change scope
           container[config.effect](config.speed);
         }
       },
