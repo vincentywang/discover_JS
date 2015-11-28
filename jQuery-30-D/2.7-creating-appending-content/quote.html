@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>Creating and Appending Content</title>
+
+  <style>
+    article {
+      width: 600px;
+      margin: auto;
+    }
+
+    blockquote.co {
+      float: right;
+      background: #e3e3e3;
+      font-size: 2em;
+      width: 35%;
+      text-align: center;
+    }
+  </style>
+
+</head>
+<body>
+
+
+
+  <article>
+    <h1>My Awesome Post</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur consequuntur, doloribus ea quasi suscipit. Ad blanditiis doloribus esse, nemo numquam officia qui, quibusdam quod, rem suscipit tenetur ullam velit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur consequuntur, doloribus ea quasi suscipit. Ad blanditiis doloribus esse, nemo numquam officia qui, quibusdam quod, rem suscipit tenetur ullam velit.
+    </p>
+    <p>
+      <span class="co">Lorem ipsum dolor sit amet</span>, consectetur adipisicing elit. Eius eligendi facilis, magni modi officia optio praesentium provident quos rem sint sunt voluptas. Dolorum ea eum laboriosam minus, neque quia tenetur? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur consequuntur, doloribus ea quasi suscipit. Ad blanditiis doloribus esse, nemo numquam officia qui, quibusdam quod, rem suscipit tenetur ullam velit.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur consequuntur, doloribus ea quasi suscipit. Ad blanditiis doloribus esse, nemo numquam officia qui, quibusdam quod, rem suscipit tenetur ullam velit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur consequuntur, doloribus ea quasi suscipit. Ad blanditiis doloribus esse, nemo numquam officia qui, quibusdam quod, rem suscipit tenetur ullam velit.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur consequuntur, doloribus ea quasi suscipit. Ad blanditiis doloribus esse, nemo numquam officia qui, quibusdam quod, rem suscipit tenetur ullam velit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. <span class="co">Hello my JavaScript</span>, doloribus ea quasi suscipit. Ad blanditiis doloribus esse, nemo numquam officia qui, quibusdam quod, rem suscipit tenetur ullam velit.
+    </p>
+  </article>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+  (function() {
+
+    var co = $('article').find('span.co').each(function(){
+
+      var $this = $(this);
+      $('<blockquote></blockquote>', {
+        class: 'co',
+        text: $this.text()
+      }).prependTo($this.closest('p'));
+    })
+
+
+
+
+  })();
+
+</script>
+
+</body>
+</html>

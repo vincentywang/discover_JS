@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>Creating and Appending Content</title>
+</head>
+<body>
+
+
+
+<div class="container">
+  <article>
+    <h1>My Awesome Post</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consectetur consequuntur, doloribus ea quasi suscipit. Ad blanditiis doloribus esse, nemo numquam officia qui, quibusdam quod, rem suscipit tenetur ullam velit.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eligendi facilis, magni modi officia optio praesentium provident quos rem sint sunt voluptas. Dolorum ea eum laboriosam minus, neque quia tenetur?
+    </p>
+  </article>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+  (function() {
+
+    $('article').append('Hello from the Javascript'); //prepend, after, before,
+
+    $('<h2></h2>', {
+      text: 'Hello from JavaScript',
+      class: 'myClass'
+    }).insertBefore('h1'); // appendTo, prependTo, insertAfter,
+
+    //$('h1').appendTo('article'); // move element
+
+    //$('p').eq(1).after($('h1')); // find the 2nd p element in the dom, append the h1 element
+
+    $('p').eq(0).after(function(){
+      return $(this).prev();
+    });
+
+
+  })();
+
+</script>
+
+</body>
+</html>
