@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <!-- jQuery, jQuery.ui -->
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- React -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <!--Custom Styles -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <title>React Bulletin Board</title>
+</head>
+<body>
+    <div id="react-container"></div>
+    <script type="text/babel" >
+
+        var Note = React.createClass({
+            getInitialState: function() { // this is a React function, 
+                return {editing: false}
+            },
+            edit: function(){
+                this.setState({editing: true});
+            },
+            save: function() {
+                this.props.onChange(this.refs.newText.value, this.props.index);
+                this.setState({editing: false});
+            },
+            remove: function() {
+                this.props.onRemove(this.props.index);
+            },
+            renderDisplay: function() {
+                return (
+                    <div className="note">
+                        <p>{this.props.children}</p>
+                        <span>
+                            <button onClick={this.edit}
+                            className="btn btn-primary glyphicon glyphicon-pencil"/>
+                            <button onClick={this.remove}
+                            className="btn btn-danger glyphicon glyphicon-trash"/>
+                        </span>
+                    </div>
+                );
+            },
+            renderForm: function() {
+                return (
+                    <div className="note">
+                    <textarea ref="newText" defaultValue={this.props.children}
+                    className="form-control"></textarea>
+                    <button onClick={this.save} className="btn btn-success btn-sm glyphicon glyphicon-floppy-disk" />
+                    </div>     
+                    )
+            },
+            render: function() { // React interface, must implement 
+                if (this.state.editing) {
+                    return this.renderForm();
+                } else {
+                    return this.renderDisplay();
+                }
+            }
+        });
+
+        var Board = React.createClass({
+            getInitialState: function(){
+                return {
+                    notes: [
+                        'Call Bill',
+                        'Email Lisa',
+                        'Make dentist appt',
+                        'Send Proposal'
+                    ]
+                };
+            },
+            propTypes: {
+                count: function(props, propName) {
+                    if (typeof props[propName] !== "number") {
+                        return new Error('The count property must be a number');
+                    }
+                    if (props[propName] > 100){
+                        return new Error("creating " + props[propName] + " notes is ridiculous");
+                    }
+                }
+            },
+            update: function(newText, i) {
+                var arr = this.state.notes;
+                arr[i] = newText;
+                this.setState({notes:arr});
+            },
+            remove: function(i) {
+                var arr = this.state.notes;
+                arr.splice(i, 1);
+                this.setState({notes:arr});
+            },
+            eachNote: function(note, i) {
+                return (
+                    <Note key={i} index={i} onChange ={this.update} onRemove={this.remove}>{note}</Note>
+                    );£
+            },
+            render: function(){
+                return (<div className="board">
+                            {this.state.notes.map(this.eachNote)}
+                    </div>);
+            }
+        })
+
+        ReactDOM.render(<Board count={10}/>, 
+            document.getElementById('react-container'));
+
+
+        var checkBox = React.createClass({
+            getInitialState: function() {
+                return {checked: false};
+            },
+            handleCheck: function() {
+                this.setState({checked: !this.state.checked});
+            },
+            render: function() {
+                var msg;
+                if (this.state.checked) {
+                    msg = "checked";
+                } else {
+                    msg = "unchecked";
+                }
+                return (<div>
+                        <input type="checkbox" onChange={this.handleCheck}/>
+                        <p>This box is {msg}.</p>
+                        </div>);
+            }
+        })
+
+
+    </script>
+</body>
+</html>
