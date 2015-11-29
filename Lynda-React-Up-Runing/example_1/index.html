@@ -13,26 +13,25 @@
 
 <script type="text/babel">
 	
-	var myComponent = React.createClass({
+	var MyComponent = React.createClass({
 		render: function() {
-			return 
-				<div>
+			return <div>
 					<h1>{this.props.text}</h1>
-					// <p>{this.props.children}</p>
+					<p>{this.props.children}</p>
 				</div>;
 		}
 	});
 
 	ReactDOM.render(<div>
-						<myComponent text="Hello World">
+						<MyComponent text="Hello World">
 						This is a hello.
-						</myComponent>
-						<myComponent text="How are you?">
+						</MyComponent>
+						<MyComponent text="How are you?">
 						This is how are you.
-						</myComponent>
-						<myComponent text="Goodbye">
+						</MyComponent>
+						<MyComponent text="Goodbye">
 						This is a Goodbye.
-						</myComponent>
+						</MyComponent>
 					</div>
 			, document.getElementById('react-container'));
 
