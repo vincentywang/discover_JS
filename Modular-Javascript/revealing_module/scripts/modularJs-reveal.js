@@ -44,7 +44,29 @@ var people = (function(){
   return {
     addPerson: addPerson,
     deletePerson: deletePerson
-  }
+  };
 
 })();
 
+/**
+ * Different module pattern
+ */
+
+ (function() {
+   "use strick";
+   var Person = (function(){
+     function Person() {
+
+     }
+     Person.prototype = {
+       name: 'vincent',
+       age: '30'
+     };
+
+     return Person;
+
+   }());
+
+   var david = new Person();
+
+ }());

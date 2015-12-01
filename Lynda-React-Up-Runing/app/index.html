@@ -23,7 +23,7 @@
     <script type="text/babel" >
 
         var Note = React.createClass({
-            getInitialState: function() { // this is a React function, 
+            getInitialState: function() { // this is a React function,
                 return {editing: false}
             },
             edit: function(){
@@ -55,10 +55,10 @@
                     <textarea ref="newText" defaultValue={this.props.children}
                     className="form-control"></textarea>
                     <button onClick={this.save} className="btn btn-success btn-sm glyphicon glyphicon-floppy-disk" />
-                    </div>     
+                    </div>
                     )
             },
-            render: function() { // React interface, must implement 
+            render: function() { // React interface, must implement
                 if (this.state.editing) {
                     return this.renderForm();
                 } else {
@@ -110,7 +110,7 @@
             }
         })
 
-        ReactDOM.render(<Board count={10}/>, 
+        ReactDOM.render(<Board count={10}/>,
             document.getElementById('react-container'));
 
 
