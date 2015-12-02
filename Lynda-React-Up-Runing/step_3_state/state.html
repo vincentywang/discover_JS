@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React Components</title>
+</head>
+<body>
+
+	<div id="react-container"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+<script type="text/babel">
+
+	var Checkbox = React.createClass({
+		getInitialState: function() {
+			return {checked: true} // return is this.state object
+		},
+		handleCheck: function() {
+			this.setState({checked: !this.state.checked})
+		},
+    render: function() {
+			var message;
+			if (this.state.checked) {
+				message = "checked";
+			} else {
+				message = "unchecked";
+			}
+			return (<div>
+					<input type="checkbox" onChange={this.handleCheck}
+					defaultChecked={this.state.checked}/>
+					<p>This box is {message}</p>
+				</div>);
+    }
+  });
+
+  ReactDOM.render(<Checkbox />,
+		document.getElementById('react-container'));
+
+</script>
+
+
+</body>
+</html>
