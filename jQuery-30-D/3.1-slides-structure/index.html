@@ -125,7 +125,7 @@
           text: 'Contact Me'
         })
           .insertAfter('article:first')
-          .on('click', this.show)
+          .on('click', this.show);
       },
 
       show: function() {
@@ -147,7 +147,7 @@
           .appendTo(this)
           .on('click', function(){
             $this[contactForm.config.effect](contactForm.config.speed);
-          })
+          });
       }
     };
 

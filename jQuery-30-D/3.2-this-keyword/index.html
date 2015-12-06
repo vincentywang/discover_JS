@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>The this keyword</title>
+</head>
+<body>
+
+<a href="http://tutsplus.com">Click Me</a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script>
+
+/*
+
+// 1. normal this refer to parent object and which object own it (global scope window object)
+console.log(this);
+
+
+// 2. this here still is refer to parent object
+(function doSomething () {
+  console.log(this);
+})();
+
+// 3. this refer to the $('a');
+function doSomething2 (e) {
+  e.preventDefault();
+  console.log(e);
+  console.log(this);
+}
+
+$('a').on('click', doSomething2);
+
+
+
+// 4. this refer to window object
+function doSomething3 () {
+  console.log(this);
+}
+
+$('a').on('click', function(e){
+  e.preventDefault();
+  doSomething2();
+});
+
+
+
+// 5. this refer to doSomething4
+function doSomething4 () {
+  this.test = function() {
+    console.log(this);
+  };
+}
+
+$('a').on('click', function(e){
+  e.preventDefault();
+
+  var ss = new doSomething4();
+  ss.test();
+
+});
+
+
+// 6. this refer to $('a')
+var obj = {
+  doIt : function  (e) {
+    e.preventDefault();
+    console.log(this);
+  }
+};
+
+$('a').on('click', obj.doIt);
+
+
+// 7.
+var obj = {
+  doIt : function() {
+    console.log(this); // this refer obj
+  }
+};
+
+$('a').on('click', function(e){
+  e.preventDefault();
+  obj.doIt();
+  console.log(this); // this refer $('a');
+});
+
+*/
+
+//8. jQuery proxy $.proxy(fun, scope) pass scope into the function
+var obj = {
+  doIt : function(e){
+    e.preventDefault();
+    console.log(this); // this refer obj
+  }
+};
+
+$('a').on('click', $.proxy(obj.doIt, obj));
+
+
+
+</script>
+
+</body>
+</html>
