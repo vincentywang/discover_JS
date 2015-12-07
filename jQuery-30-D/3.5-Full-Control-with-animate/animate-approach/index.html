@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Custom Effect Methods</title>
+</head>
+<body>
+
+<style>
+  .box {
+    width: 400px;
+    background: red;
+    padding: 2em;
+    position: relative;
+  }
+</style>
+
+<div class="box">
+  <h2>Some Content Here</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, mollitia! Suscipit tempora veniam quasi beatae neque dignissimos, doloremque veritatis recusandae aspernatur reiciendis quisquam eveniet modi, quo, cumque eum. Dicta, rem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi quaerat laborum fugiat, consectetur dolore illum vitae magni natus rem doloremque eius odio possimus dicta reiciendis repellendus mollitia eaque porro similique.
+  </p>
+</div>
+
+<p><button>Increase</button></p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script>
+
+/*
+
+(function() {
+  var $box = $('div.box');
+
+  
+  // $('button').on('click', function(){
+  //   $box.animate({
+  //     'fontSize' : '+=5', // reason didn't add px is jquery default unit measurement
+  //     'color' : 'white', // animate function cannot animate color, need other plugin support
+  //     'width' : '+=300'
+  //   }, 5000, 'linear', function(){
+  //     console.log('completed');
+  //   }); //swing
+  // });
+  
+
+  // alternative approach
+  $('button').on('click', function(){
+    $box.animate({
+      'fontSize' : '+=5'
+    }, {
+      duration : 500,
+      complete : function() {
+        console.log('complete');
+      },
+      step : function() {
+        console.log('The current font-size is ' + $(this).css('fontSize'));
+      }
+    }); //swing
+  });
+
+
+})();
+
+*/
+
+// stack animate function
+(function() {
+  var $box = $('div.box');
+
+  // // list of animates will be executed one by one
+  // $('button').on('click', function(){
+  //   $box
+  //     .animate({
+  //       'fontSize' : '+=5'
+  //     }, {duration: 500})
+  //     .animate({
+  //       'top' : 500
+  //     }, 3000);
+  // });
+
+   // top will execute at the same time of font-size executed
+  $('button').on('click', function(){
+    $box
+      .animate({
+        'fontSize' : '+=5'
+      }, {duration: 1000})
+      .animate({
+        'top' : 500
+      }, {duration : 3000, queue : false}); // this animate will not pushed into the queue. 
+  });
+
+
+})();
+
+
+</script>
+
+</body>
+</html>
