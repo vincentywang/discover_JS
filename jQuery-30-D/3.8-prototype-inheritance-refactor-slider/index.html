@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset=utf-8>
-	<title>The Obligatory Slider</title>
+	<title>Refactor Slider</title>
 	<style>
 		body {
 			width: 500px;
@@ -35,6 +35,22 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="slider.js"></script>
+
+<script>
+
+(function() {
+	
+	var container = $('div.slider').css('overflow', 'hidden').children('ul');
+	var	Slider = new Slider(container, $('#slider-nav'));
+
+	Slider.nav.find('button').on('click', function(){
+		Slider.setCurrent($(this).data('dir'));
+		Slider.transition();
+	});
+
+})();
+
+</script>
 
 </body>
 </html>
