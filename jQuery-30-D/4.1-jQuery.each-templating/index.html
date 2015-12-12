@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>jQuery Templating</title>
+</head>
+<body>
+
+<script id="blogTemplate" type="example/template">
+	<h2>{{title}}</h2>
+	<img src={{thumbnail}} alt={{title}}>
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script>
+
+(function() {
+	
+	var content = [
+		{
+			title: "my awseome blog post",
+			thumbnail: "https://cms-assets.tutsplus.com/uploads/users/48/posts/25288/preview_image/tiffany-preview.jpg"
+		},
+		{
+			title: "my second awseome blog post",
+			thumbnail: "https://cms-assets.tutsplus.com/uploads/users/15/posts/24999/preview_image/envatotuts.png"
+		},
+		{
+			title: "special awseome blog post",
+			thumbnail: "https://cms-assets.tutsplus.com/uploads/users/48/posts/24322/preview_image/0-thumb.png"
+		}
+	],
+		template = $.trim( $('#blogTemplate').html() );
+		sHtml = '';
+
+	$.each( content, function(index, val){
+		sHtml += template.replace( /{{title}}/ig, val.title )
+							.replace( /{{thumbnail}}/ig, val.thumbnail);
+	});
+
+	$(document.body).append(sHtml);
+
+})();
+
+</script>
+
+</body>
+</html>
