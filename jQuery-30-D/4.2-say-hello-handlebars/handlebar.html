@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>handlebar</title>
+</head>
+<body>
+
+<ul class="tweets">
+	<script id="template" type="text/x-handlebars-template">
+	{{#each this}}
+	<li>
+		<h2>{{fullName author}}</h2>
+		<p>{{{tweet}}}</p>
+
+		{{#if quote}}
+			<h5>{{quote}}</h5>
+		{{else}}	
+			<h5>Author does not have a quote</h5>
+		{{/if}}
+	</li>
+	{{/each}}
+</script>
+</ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+
+<script>
+	
+(function() {
+
+	var context = [
+		{
+			author: {first: 'Vincent', last: 'Wang', age: '31'},
+			tweet: 'Javascript is future',
+			quote: 'Never ever, ever, ever, ever, ever give up'
+		},
+		{
+			author: {first: 'John', last: 'Doe', age: '42'},
+			tweet: '<strong>Javascript</strong> is best programing language',
+		},
+	];
+
+	Handlebars.registerHelper('fullName', function(author){
+		return author.first + ' ' + author.last + ' - ' + author.age;
+	});
+
+	var template = Handlebars.compile($('#template').html());
+
+	$('ul.tweets').append(template(context));
+
+})();
+
+</script>
+
+</body>
+</html>
