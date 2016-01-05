@@ -20,4 +20,11 @@ var heirloomRoses = new app.singleFlower({
 	link: "heirloomRoses"
 });
 
-rainbowRoses.set("price", 20);
+var flowerGroup = new app.FlowersCollection([
+	redRoses, heirloomRoses
+]);
+
+flowerGroup.add(rainbowRoses);
+flowerGroup.remove(heirloomRoses);
+
+console.log(flowerGroup.toJSON());
