@@ -21,10 +21,17 @@ var heirloomRoses = new app.singleFlower({
 });
 
 var flowerGroup = new app.FlowersCollection([
-	redRoses, heirloomRoses
+	redRoses, heirloomRoses, rainbowRoses
 ]);
 
-flowerGroup.add(rainbowRoses);
-flowerGroup.remove(heirloomRoses);
+// flowerGroup.add(rainbowRoses);
+// flowerGroup.remove(heirloomRoses);
 
-console.log(flowerGroup.toJSON());
+// console.log(flowerGroup.toJSON());
+
+
+var flowerGroupView = new app.allFlowersView({collection:flowerGroup});
+$("#allFlowers").html(flowerGroupView.render().el);
+
+var flowerRouter = new app.Router();
+Backbone.history.start();
