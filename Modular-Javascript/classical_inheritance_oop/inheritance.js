@@ -29,15 +29,19 @@ Person.prototype.shoutName = function() {
 // child class
 
 var Musician = function(name, instrument) {
-  Musician.super_.call(this, name);
+  Musician.super_.call(this, name); // call parents's constructor ex. Parent()
   this.instrument = instrument;
 };
+
+// Musician inherits from Person
 
 inherits(Musician, Person);
 
 Musician.prototype.getInstrument = function() {
   console.log(this.instrument);
 };
+
+// this method will overwrite parent's same name method
 
 Musician.prototype.shoutName = function() {
   console.log("DUDE! my name is " + this.name + "!!!!!!");
