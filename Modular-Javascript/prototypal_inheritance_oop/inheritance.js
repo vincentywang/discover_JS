@@ -3,8 +3,10 @@
 var human = {
   species: "human",
   create: function(values) {
+    // copy of origin instance as base to edit / add new properties
     var instance = Object.create(this);
     Object.keys(values).forEach(function(key){
+      // create new property or overwrite exist property
       instance[key] = values[key];
     });
     return instance;
