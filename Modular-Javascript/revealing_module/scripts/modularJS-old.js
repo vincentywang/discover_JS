@@ -1,3 +1,11 @@
+/*
+|--------------------------------------------------------------------------
+| Traditional directly using jQuery
+|--------------------------------------------------------------------------
+|
+| binding all logics in the HTML element
+|
+*/
 var people = [];
 var template = $('#people-template').html();
 

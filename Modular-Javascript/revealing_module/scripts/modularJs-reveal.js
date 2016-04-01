@@ -1,6 +1,11 @@
-/**
- *  Revealing Module Pattern
- */
+/*
+|--------------------------------------------------------------------------
+| Revealing Module Pattern
+|--------------------------------------------------------------------------
+|
+| wrapper all functionality, specify a return object with interface functions 
+|
+*/
 
 var people = (function(){
   var people = [];

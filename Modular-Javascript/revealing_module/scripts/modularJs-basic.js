@@ -1,7 +1,11 @@
-
-/**
- *  Basic Modular approach
- */
+/*
+|--------------------------------------------------------------------------
+| Basic Modular approach
+|--------------------------------------------------------------------------
+|
+| wrapper all functions, initial it and no additional interact with this object
+|
+*/
 
 (function(){
 
