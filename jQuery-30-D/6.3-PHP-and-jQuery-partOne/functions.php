@@ -6,7 +6,7 @@ function connect() {
 }
 
 function get_actors() {
-	
+	//SELECT actor_id, first_name, last_name FROM actor	
 }
 
  

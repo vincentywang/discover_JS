@@ -1,5 +1,5 @@
-<?php include '_partials/header.php' ?>
+<?php include '_partials/header.php'; ?>
 
-<div class="container">
+<h1>Search actors by last name</h1>
 	
-<?php include '_partials/footer.php' ?>
+<?php include '_partials/footer.php'; ?>
